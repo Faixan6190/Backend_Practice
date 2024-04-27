@@ -130,7 +130,5 @@ app.get("/products", authMiddleWare, (request, response, next) => {
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
+  console.log(`server running on http://localhost:${PORT}`);
 });
-
-satisfies;
-debugger;
