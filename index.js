@@ -96,21 +96,36 @@ import { temp } from "./temp.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// const authMiddleWare = (request, response, next) => {
+const authMiddleWare = (request, response, next) => {
+  console.log("hit every request");
+  const isAuth = true;
+  if (!isAuth) {
+    response.json({
+      data: null,
+      message: "not valid",
+    });
+  } else {
+    next();
+  }
+};
+
+// app.use((request, response, next) => {
 //   console.log("hit every request");
 //   const isAuth = true;
 //   if (!isAuth) {
-//     response.json({
-//       data: null,
-//       message: "not valid",
-//     });
+//     response.send("UNAUTH USER");
 //   } else {
 //     next();
 //   }
-// };
+// });
 
-app.get("/", authMiddleWare, (request, response) => {
+app.get("/", (request, response) => {
   response.send("TEsting Middleware");
+});
+
+app.get("/products", authMiddleWare, (request, response, next) => {
+  console.log("request.query", request.query);
+  // const query = request.query;
 });
 
 app.listen(PORT, () => {
