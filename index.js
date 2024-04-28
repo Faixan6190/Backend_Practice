@@ -125,11 +125,33 @@ app.get("/", (request, response) => {
   response.send("Testing Middleware");
 });
 
-app.get("/products", authMiddleWare, (request, response, next) => {
-  console.log("request.query", request.query);
+// app.get("/products", authMiddleWare, (request, response, next) => {
+//   console.log("request.query", request.query);
+//   // const query = request.query;
+// });
+
+app.get("/products", authMiddleWare, (request, response) => {
+  console.log("request.query", request);
   // const query = request.query;
+  // if (query?.limit) {
+  //   response.send(product.slice(0, query?.limit));
+  // } else {
+  //   response.send(product);
+  // }
 });
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
+
+var arr = [1, 2, 3, 4, 5, 6];
+
+arr.forEach((index) => {
+  console.log(index + " Hello");
+});
+
+let newArr = arr.map((value) => {
+  return value + 2;
+});
+
+console.log("newArr", newArr);
