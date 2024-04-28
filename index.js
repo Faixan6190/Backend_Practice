@@ -120,7 +120,7 @@ const authMiddleWare = (request, response, next) => {
 // });
 
 app.get("/", (request, response) => {
-  response.send("TEsting Middleware");
+  response.send("Testing Middleware");
 });
 
 app.get("/products", authMiddleWare, (request, response, next) => {
