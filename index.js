@@ -144,14 +144,18 @@ app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
 
-var arr = [1, 2, 3, 4, 5, 6];
+// var arr = [1, 2, 3, 4, 5, 6];
 
-arr.forEach((index) => {
-  console.log(index + " Hello");
-});
+// arr.forEach((index) => {
+//   console.log(index + " Hello");
+// });
 
-let newArr = arr.map((value) => {
-  return value + 2;
-});
+// let newArr = arr.map((value) => {
+//   return value + 2;
+// });
 
-console.log("newArr", newArr);
+// console.log("newArr", newArr);
+
+// function abcd() {}
+
+// console.dir(abcd);
