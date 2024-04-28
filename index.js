@@ -119,6 +119,8 @@ const authMiddleWare = (request, response, next) => {
 //   }
 // });
 
+const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
+
 app.get("/", (request, response) => {
   response.send("Testing Middleware");
 });
