@@ -1,37 +1,92 @@
-// import express from "express";
+// // import express from "express";
 
-// const app = express();
-// const PORT = 5000;
+// // const app = express();
+// // const PORT = 5000;
 
-// app.get("/", (request, response) => {
-//   response.send("Hello World , Hello Faizan");
-// });
+// // app.get("/", (request, response) => {
+// //   response.send("Hello World , Hello Faizan");
+// // });
 
-// app.listen(PORT, () =>
-//   console.log(`server running on http://localhost:${PORT}`)
-// );
+// // app.listen(PORT, () =>
+// //   console.log(`server running on http://localhost:${PORT}`)
+// // );
 
-// import express from "express";
+// // import express from "express";
 
-// const app = express();
-// const PORT = 5000;
+// // const app = express();
+// // const PORT = 5000;
 
-// app.get("/", (request, response) => {
-//   response.send("Hello Thursday , Hello Friday");
-// });
-// app.get("/contact", (request, response) => {
-//   response.send("Hello Contact");
-// });
-// app.get("/about", (request, response) => {
-//   response.send("Hello About");
-// });
-// app.get("/overview", (request, response) => {
-//   response.send("Hello Overview");
-// });
+// // app.get("/", (request, response) => {
+// //   response.send("Hello Thursday , Hello Friday");
+// // });
+// // app.get("/contact", (request, response) => {
+// //   response.send("Hello Contact");
+// // });
+// // app.get("/about", (request, response) => {
+// //   response.send("Hello About");
+// // });
+// // app.get("/overview", (request, response) => {
+// //   response.send("Hello Overview");
+// // });
 
-// app.listen(PORT, () =>
-//   console.log(`server running on http://localhost:${PORT}`)
-// );
+// // app.listen(PORT, () =>
+// //   console.log(`server running on http://localhost:${PORT}`)
+// // );
+
+// // import express from "express";
+// // import { product } from "./product.js";
+// // import { user } from "./user.js";
+// // import { temp } from "./temp.js";
+
+// // const app = express();
+// // const PORT = process.env.PORT || 5000;
+
+// // app.get("/", (request, response) => {
+// //   response.send("Hello Index");
+// // });
+
+// // app.get("/product", (request, response) => {
+// //   response.send(product);
+// // });
+
+// // app.use("/user", (request, response) => {
+// //   response.send(user);
+// // });
+
+// // app.use((request, response, next) => {
+// //   console.log("hit every request");
+// //   const isAuth = true;
+// //   if (!isAuth) {
+// //     response.send("UNAUTH USER");
+// //   } else {
+// //     next();
+// //   }
+// // });
+
+// // app.use((request, response, next) => {
+// //   console.log("Hello I'm Middleware");
+// //   // return response.json({
+// //   //   message: "Not Sending A Request Some Security Reason",
+// //   // });
+// //   next();
+// // });
+
+// // app.get("/temp", (request, response) => {
+// //   response.send(temp);
+// // });
+
+// // app.use((req, resp, next) => {
+// //   console.log("hit every request");
+// //   const isAuth = true;
+// //   if (!Auth) {
+// //     resp.json({
+// //       data: null,
+// //       message: "UnAuth User",
+// //     });
+// //   } else {
+// //     next();
+// //   }
+// // });
 
 // import express from "express";
 // import { product } from "./product.js";
@@ -41,121 +96,79 @@
 // const app = express();
 // const PORT = process.env.PORT || 5000;
 
-// app.get("/", (request, response) => {
-//   response.send("Hello Index");
-// });
-
-// app.get("/product", (request, response) => {
-//   response.send(product);
-// });
-
-// app.use("/user", (request, response) => {
-//   response.send(user);
-// });
-
-// app.use((request, response, next) => {
+// const authMiddleWare = (request, response, next) => {
 //   console.log("hit every request");
 //   const isAuth = true;
 //   if (!isAuth) {
-//     response.send("UNAUTH USER");
-//   } else {
-//     next();
-//   }
-// });
-
-// app.use((request, response, next) => {
-//   console.log("Hello I'm Middleware");
-//   // return response.json({
-//   //   message: "Not Sending A Request Some Security Reason",
-//   // });
-//   next();
-// });
-
-// app.get("/temp", (request, response) => {
-//   response.send(temp);
-// });
-
-// app.use((req, resp, next) => {
-//   console.log("hit every request");
-//   const isAuth = true;
-//   if (!Auth) {
-//     resp.json({
+//     response.json({
 //       data: null,
-//       message: "UnAuth User",
+//       message: "not valid",
 //     });
 //   } else {
 //     next();
 //   }
+// };
+
+// // app.use((request, response, next) => {
+// //   console.log("hit every request");
+// //   const isAuth = true;
+// //   if (!isAuth) {
+// //     response.send("UNAUTH USER");
+// //   } else {
+// //     next();
+// //   }
+// // });
+
+// const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
+
+// app.get("/", (request, response) => {
+//   response.send("Testing Middleware");
 // });
+
+// // app.get("/products", authMiddleWare, (request, response, next) => {
+// //   console.log("request.query", request.query);
+// //   // const query = request.query;
+// // });
+
+// app.get("/products", authMiddleWare, (request, response) => {
+//   console.log("request.query", request);
+//   // const query = request.query;
+//   // if (query?.limit) {
+//   //   response.send(product.slice(0, query?.limit));
+//   // } else {
+//   //   response.send(product);
+//   // }
+// });
+
+// app.listen(PORT, () => {
+//   console.log(`server running on http://localhost:${PORT}`);
+// });
+
+// // var arr = [1, 2, 3, 4, 5, 6];
+
+// // arr.forEach((index) => {
+// //   console.log(index + " Hello");
+// // });
+
+// // let newArr = arr.map((value) => {
+// //   return value + 2;
+// // });
+
+// // console.log("newArr", newArr);
+
+// // function abcd() {}
+
+// // console.dir(abcd);
 
 import express from "express";
-import { product } from "./product.js";
-import { user } from "./user.js";
-import { temp } from "./temp.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-const authMiddleWare = (request, response, next) => {
-  console.log("hit every request");
-  const isAuth = true;
-  if (!isAuth) {
-    response.json({
-      data: null,
-      message: "not valid",
-    });
-  } else {
-    next();
-  }
-};
-
-// app.use((request, response, next) => {
-//   console.log("hit every request");
-//   const isAuth = true;
-//   if (!isAuth) {
-//     response.send("UNAUTH USER");
-//   } else {
-//     next();
-//   }
-// });
-
-const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
-
-app.get("/", (request, response) => {
-  response.send("Testing Middleware");
-});
-
-// app.get("/products", authMiddleWare, (request, response, next) => {
-//   console.log("request.query", request.query);
-//   // const query = request.query;
-// });
-
-app.get("/products", authMiddleWare, (request, response) => {
-  console.log("request.query", request);
-  // const query = request.query;
-  // if (query?.limit) {
-  //   response.send(product.slice(0, query?.limit));
-  // } else {
-  //   response.send(product);
-  // }
+app.get("/", (req, res) => {
+  res.send("Hello World");
 });
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
-
-// var arr = [1, 2, 3, 4, 5, 6];
-
-// arr.forEach((index) => {
-//   console.log(index + " Hello");
-// });
-
-// let newArr = arr.map((value) => {
-//   return value + 2;
-// });
-
-// console.log("newArr", newArr);
-
-// function abcd() {}
-
-// console.dir(abcd);
