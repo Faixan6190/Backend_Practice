@@ -161,6 +161,7 @@
 // // console.dir(abcd);
 
 import express from "express";
+import { product } from "./product.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -170,13 +171,32 @@ app.use((req, res, next) => {
   next();
 });
 
+const authMiddleware = (request, response, next) => {
+  console.log("hit every request");
+  const isAuth = true;
+  if (!isAuth) {
+    response.json({
+      data: null,
+      message: "UnAUTH USER",
+    });
+  } else {
+    next();
+  }
+};
+
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("<h1>Hello World</h1>");
 });
 
-// app.get("/about", (req, res) => {
-//   res.send("Hello About");
-// });
+app.get("/products", authMiddleware, (request, response) => {
+  console.log("request.query", request.query);
+  const query = request.query;
+  if (query?.limit) {
+    response.send(product.slice(0, query?.limit));
+  } else {
+    response.send(product);
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
