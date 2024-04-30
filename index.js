@@ -166,10 +166,10 @@ import { product } from "./product.js";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use((req, res, next) => {
-  console.log("middleware chala");
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("middleware chala");
+//   next();
+// });
 
 const authMiddleware = (request, response, next) => {
   console.log("hit every request");
@@ -188,6 +188,17 @@ app.get("/", authMiddleware, (req, res) => {
   res.send("<h1>Hello World</h1>");
 });
 
+// app.get("/products/:id", authMiddleware, (req, res) => {
+//   res.send(`<h1>Welcome, ${req.params.id}</h1>`);
+// });
+
+// app.get("/author/:username/:age", authMiddleware, (req, res) => {
+//   res.send(
+//     `<h1>Welcome, ${req.params.username} of his age is ${req.params.age}</h1>`
+//   );
+//   res.send("chal raha hai");
+// });
+
 app.get("/products", authMiddleware, (request, response) => {
   console.log("request.query", request.query);
   const query = request.query;
@@ -198,6 +209,21 @@ app.get("/products", authMiddleware, (request, response) => {
   }
 });
 
+app.get("/products/:id", (request, response) => {
+  const singleProduct = product.find(
+    (product) => product.id === +request.params.id
+  );
+  console.log("singleProduct", singleProduct);
+  response.send(singleProduct);
+});
+
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
+
+const a = 12;
+const num = a.toString();
+console.log(typeof num, "testing");
+
+const b = "16";
+console.log(typeof +b);
