@@ -184,7 +184,7 @@ const authMiddleware = (request, response, next) => {
   }
 };
 
-app.get("/", (req, res) => {
+app.get("/", authMiddleware, (req, res) => {
   res.send("<h1>Hello World</h1>");
 });
 
@@ -201,4 +201,3 @@ app.get("/products", authMiddleware, (request, response) => {
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
-app.listen;
