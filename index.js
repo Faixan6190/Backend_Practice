@@ -165,9 +165,18 @@ import express from "express";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use((req, res, next) => {
+  console.log("middleware chala");
+  next();
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+// app.get("/about", (req, res) => {
+//   res.send("Hello About");
+// });
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
