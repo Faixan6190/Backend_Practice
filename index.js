@@ -152,8 +152,7 @@
 
 // // let newArr = arr.map((value) => {
 // //   return value + 2;
-// // });
-
+// //
 // // console.log("newArr", newArr);
 
 // // function abcd() {}
@@ -161,7 +160,7 @@
 // // console.dir(abcd);
 
 import express from "express";
-import { product } from "./product.js";
+// import { product } from "./product.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -171,22 +170,22 @@ const PORT = process.env.PORT || 3000;
 //   next();
 // });
 
-const authMiddleware = (request, response, next) => {
-  console.log("hit every request");
-  const isAuth = true;
-  if (!isAuth) {
-    response.json({
-      data: null,
-      message: "UnAUTH USER",
-    });
-  } else {
-    next();
-  }
-};
+// const authMiddleware = (request, response, next) => {
+//   console.log("hit every request");
+//   const isAuth = true;
+//   if (!isAuth) {
+//     response.json({
+//       data: null,
+//       message: "UnAUTH USER",
+//     });
+//   } else {
+//     next();
+//   }
+// };
 
-app.get("/", authMiddleware, (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
+// app.get("/", authMiddleware, (req, res) => {
+//   res.send("<h1>Hello World</h1>");
+// });
 
 // app.get("/products/:id", authMiddleware, (req, res) => {
 //   res.send(`<h1>Welcome, ${req.params.id}</h1>`);
@@ -199,31 +198,24 @@ app.get("/", authMiddleware, (req, res) => {
 //   res.send("chal raha hai");
 // });
 
-app.get("/products", authMiddleware, (request, response) => {
-  console.log("request.query", request.query);
-  const query = request.query;
-  if (query?.limit) {
-    response.send(product.slice(0, query?.limit));
-  } else {
-    response.send(product);
-  }
-});
+// app.get("/products", authMiddleware, (request, response) => {
+//   console.log("request.query", request.query);
+//   const query = request.query;
+//   if (query?.limit) {
+//     response.send(product.slice(0, query?.limit));
+//   } else {
+//     response.send(product);
+//   }
+// });
 
-app.get("/products/:id", (request, response) => {
-  const singleProduct = product.find(
-    (product) => product.id === +request.params.id
-  );
-  console.log("singleProduct", singleProduct);
-  response.send(singleProduct);
-});
+// app.get("/products/:id", (request, response) => {
+//   const singleProduct = product.find(
+//     (product) => product.id === +request.params.id
+//   );
+//   console.log("singleProduct", singleProduct);
+//   response.send(singleProduct);
+// });
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
-
-const a = 12;
-const num = a.toString();
-console.log(typeof num, "testing");
-
-const b = "16";
-console.log(typeof +b);
