@@ -152,7 +152,8 @@
 
 // // let newArr = arr.map((value) => {
 // //   return value + 2;
-// //
+// // });
+
 // // console.log("newArr", newArr);
 
 // // function abcd() {}
