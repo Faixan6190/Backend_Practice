@@ -161,7 +161,7 @@
 // // console.dir(abcd);
 
 import express from "express";
-// import { product } from "./product.js";
+// import { product } from "./product.js";'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -184,9 +184,9 @@ const PORT = process.env.PORT || 3000;
 //   }
 // };
 
-// app.get("/", authMiddleware, (req, res) => {
-//   res.send("<h1>Hello World</h1>");
-// });
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World</h1>");
+});
 
 // app.get("/products/:id", authMiddleware, (req, res) => {
 //   res.send(`<h1>Welcome, ${req.params.id}</h1>`);
