@@ -119,8 +119,6 @@
 // //   }
 // // });
 
-// const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
-
 // app.get("/", (request, response) => {
 //   response.send("Testing Middleware");
 // });
@@ -160,33 +158,13 @@
 
 // // console.dir(abcd);
 
-import express from "express";
-// import { product } from "./product.js";'
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// app.use((req, res, next) => {
-//   console.log("middleware chala");
-//   next();
+// app.put("/updateuser/:id", (request, response) => {
+//   console.log("param", request.params);
+//   console.log("body", request.body);
+//   response.json({
+//     message: "USER UPDATED!",
+//   });
 // });
-
-// const authMiddleware = (request, response, next) => {
-//   console.log("hit every request");
-//   const isAuth = true;
-//   if (!isAuth) {
-//     response.json({
-//       data: null,
-//       message: "UnAUTH USER",
-//     });
-//   } else {
-//     next();
-//   }
-// };
-
-app.get("/", (req, res) => {
-  res.send("<h1>Hello World</h1>");
-});
 
 // app.get("/products/:id", authMiddleware, (req, res) => {
 //   res.send(`<h1>Welcome, ${req.params.id}</h1>`);
@@ -216,6 +194,79 @@ app.get("/", (req, res) => {
 //   console.log("singleProduct", singleProduct);
 //   response.send(singleProduct);
 // });
+
+// app.use((req, res, next) => {
+//   console.log("middleware chala");
+//   next();
+// });
+
+// const authMiddleware = (request, response, next) => {
+//   console.log("hit every request");
+//   const isAuth = true;
+//   if (!isAuth) {
+//     response.json({
+//       data: null,
+//       message: "UnAUTH USER",
+//     });
+//   } else {
+//     next();
+//   }
+// };
+
+import express from "express";
+import mongoose from "mongoose";
+import userModal from "./models/userSchema.js";
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
+mongoose
+  .connect(uri)
+  .then((res) => {
+    console.log("mongoDb connected");
+  })
+  .catch((err) => {
+    console.log("mongoDB error", err.message);
+  });
+
+// app.get("/", (req, res) => {
+//   res.json({
+//     messsage: "Hello World",
+//   });
+// });
+
+// app.post("/createuesr", async (request, response) => {
+//   try {
+//     console.log("request body", request.body);
+//     const userResponse = await userModal.create(request.body);
+//     console.log(userResponse);
+//     response.json({
+//       data: userResponse,
+//       status: true,
+//       message: "User Created",
+//     });
+//   } catch (error) {
+//     response.json({
+//       data: [],
+//       status: false,
+//       message: error.message,
+//     });
+//   }
+// });
+
+app.get("/products/:id", (req, res) => {
+  res.send(`<h1>Welcome, ${req.params.id}</h1>`);
+});
+
+app.get("/author/:username/:age", (req, res) => {
+  res.send(
+    `<h1>Welcome, ${req.params.username} of his age is ${req.params.age}</h1>`
+  );
+  res.send("chal raha hai");
+});
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
