@@ -234,13 +234,32 @@ mongoose
     console.log("mongoDB error", err.message);
   });
 
-// app.get("/", (req, res) => {
-//   res.json({
-//     messsage: "Hello World",
-//   });
-// });
+app.get("/", (req, res) => {
+  res.json({
+    messsage: "Hello World",
+  });
+});
 
 app.post("/createuser", async (request, response) => {
+  try {
+    console.log("request body", request.body);
+    const userResponse = await userModal.create(request.body);
+    console.log(userResponse);
+    response.json({
+      data: userResponse,
+      status: true,
+      message: "User Created",
+    });
+  } catch (error) {
+    response.json({
+      data: [],
+      status: false,
+      message: error.message,
+    });
+  }
+});
+
+app.post("/createuser2", async (request, response) => {
   try {
     console.log("request body", request.body);
     const userResponse = await userModal.create(request.body);
