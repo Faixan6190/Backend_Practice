@@ -213,7 +213,6 @@
 //   }
 // };
 
-import {} from "module";
 import express from "express";
 import mongoose from "mongoose";
 import userModal from "./models/userSchema.js";
