@@ -216,7 +216,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import userModal from "./models/userSchema.js";
-import { products, express } from "./product.js";
+import { products } from "./product.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
