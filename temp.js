@@ -14,4 +14,9 @@ export const temp = [
     name: "Faiq",
     class: 18,
   },
+  {
+    id: "4",
+    name: "sufiyan",
+    class: 12,
+  },
 ];
