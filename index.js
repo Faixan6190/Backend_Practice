@@ -213,110 +213,110 @@
 //   }
 // };
 
-import express from "express";
-import mongoose from "mongoose";
-import userModal from "./models/userSchema.js";
-import { products } from "./product.js";
+// import express from "express";
+// import mongoose from "mongoose";
+// import userModal from "./models/userSchema.js";
+// import { products } from "./product.js";
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+// const app = express();
+// const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
-const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
-mongoose
-  .connect(uri)
-  .then((res) => {
-    console.log("mongoDb connected");
-  })
-  .catch((err) => {
-    console.log("mongoDB error", err.message);
-  });
+// const uri = "mongodb+srv://admin:admin@cluster0.uxxmpv3.mongodb.net/";
+// mongoose
+//   .connect(uri)
+//   .then((res) => {
+//     console.log("mongoDb connected");
+//   })
+//   .catch((err) => {
+//     console.log("mongoDB error", err.message);
+//   });
 
-app.get("/", (req, res) => {
-  res.json({
-    messsage: "Hello World",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     messsage: "Hello World",
+//   });
+// });
 
-app.post("/createuser", async (request, response) => {
-  try {
-    console.log("request body", request.body);
-    const userResponse = await userModal.create(request.body);
-    console.log(userResponse);
-    response.json({
-      data: userResponse,
-      status: true,
-      message: "User Created",
-    });
-  } catch (error) {
-    response.json({
-      data: [],
-      status: false,
-      message: error.message,
-    });
-  }
-});
+// app.post("/createuser", async (request, response) => {
+//   try {
+//     console.log("request body", request.body);
+//     const userResponse = await userModal.create(request.body);
+//     console.log(userResponse);
+//     response.json({
+//       data: userResponse,
+//       status: true,
+//       message: "User Created",
+//     });
+//   } catch (error) {
+//     response.json({
+//       data: [],
+//       status: false,
+//       message: error.message,
+//     });
+//   }
+// });
 
-app.post("/createuser2", async (request, response) => {
-  try {
-    console.log("request body", request.body);
-    const userResponse = await userModal.create(request.body);
-    console.log(userResponse);
-    response.json({
-      data: userResponse,
-      status: true,
-      message: "User Created",
-    });
-  } catch (error) {
-    response.json({
-      data: [],
-      status: false,
-      message: error.message,
-    });
-  }
-});
+// app.post("/createuser2", async (request, response) => {
+//   try {
+//     console.log("request body", request.body);
+//     const userResponse = await userModal.create(request.body);
+//     console.log(userResponse);
+//     response.json({
+//       data: userResponse,
+//       status: true,
+//       message: "User Created",
+//     });
+//   } catch (error) {
+//     response.json({
+//       data: [],
+//       status: false,
+//       message: error.message,
+//     });
+//   }
+// });
 
-app.get("/products/:id", (req, res) => {
-  res.send(`<h1>Welcome, ${req.params.id}</h1>`);
-});
+// app.get("/products/:id", (req, res) => {
+//   res.send(`<h1>Welcome, ${req.params.id}</h1>`);
+// });
 
-app.get("/author/:username/:age", (req, res) => {
-  res.send(
-    `<h1>Welcome, ${req.params.username} of his age is ${req.params.age}</h1>`
-  );
-});
-app.post("/products", (req, res) => {
-  const { city, street, number, zipcode } = req.body;
+// app.get("/author/:username/:age", (req, res) => {
+//   res.send(
+//     `<h1>Welcome, ${req.params.username} of his age is ${req.params.age}</h1>`
+//   );
+// });
+// app.post("/products", (req, res) => {
+//   const { city, street, number, zipcode } = req.body;
 
-  if (!city || !street || !number || !zipcode) {
-    res.send("fields are required").status(400);
-  }
-  const newProduct = [...products];
-  newProduct.push({
-    ...products[0],
-    address: {
-      ...products[0].address,
-      city,
-      street,
-      number,
-      zipcode,
-    },
-  });
+//   if (!city || !street || !number || !zipcode) {
+//     res.send("fields are required").status(400);
+//   }
+//   const newProduct = [...products];
+//   newProduct.push({
+//     ...products[0],
+//     address: {
+//       ...products[0].address,
+//       city,
+//       street,
+//       number,
+//       zipcode,
+//     },
+//   });
 
-  res.send(JSON.stringify(newProduct)).status(200);
-});
+//   res.send(JSON.stringify(newProduct)).status(200);
+// });
 
-app.delete("/products/:id", (req, res) => {
-  const prods = [...products];
-  const { id } = req.params;
+// app.delete("/products/:id", (req, res) => {
+//   const prods = [...products];
+//   const { id } = req.params;
 
-  res
-    .send(JSON.stringify(prods.filter((prod) => prod.id !== parseInt(id))))
-    .status(200);
-});
+//   res
+//     .send(JSON.stringify(prods.filter((prod) => prod.id !== parseInt(id))))
+//     .status(200);
+// });
 
-app.listen(PORT, () => {
-  console.log(`server running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`server running on http://localhost:${PORT}`);
+// });
