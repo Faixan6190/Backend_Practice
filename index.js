@@ -322,8 +322,13 @@
 // });
 
 import express from "express";
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+
+const users = [];
 
 app.get("/", (request, respone) => {
   respone.send({
@@ -331,5 +336,9 @@ app.get("/", (request, respone) => {
   });
 });
 
+app.post("/user", (request, response) => {
+  users.push(request.body);
+  response.send({ user: request.body, message: "User added successfully" });
+});
+
 app.listen(PORT, () => console.log(`Server is running up at ${PORT}`));
-  
