@@ -337,7 +337,7 @@ app.get("/", (request, respone) => {
 });
 
 app.post("/user", (request, response) => {
-  users.push(request.body);
+  users.push(request.body.id);
   response.send({ user: request.body, message: "User added successfully" });
 });
 
