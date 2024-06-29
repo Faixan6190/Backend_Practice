@@ -332,7 +332,7 @@ const users = [];
 
 app.get("/", (request, respone) => {
   respone.send({
-    message: "Server Up is",
+    message: "Server Up",
   });
 });
 
