@@ -321,24 +321,24 @@
 //   console.log(`server running on http://localhost:${PORT}`);
 // });
 
-import express from "express";
+// import express from "express";
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+// const app = express();
+// const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+// app.use(express.json());
 
-const users = [];
+// const users = [];
 
-app.get("/", (request, respone) => {
-  respone.send({
-    message: "Server Up",
-  });
-});
+// app.get("/", (request, respone) => {
+//   respone.send({
+//     message: "Server Up",
+//   });
+// });
 
-app.post("/user", (request, response) => {
-  users.push(request.body);
-  response.send({ user: request.body, message: "User added successfully" });
-});
+// app.post("/user", (request, response) => {
+//   users.push(request.body);
+//   response.send({ user: request.body, message: "User added successfully" });
+// });
 
-app.listen(PORT, () => console.log(`Server is running up at ${PORT}`));
+// app.listen(PORT, () => console.log(`Server is running up at ${PORT}`));
