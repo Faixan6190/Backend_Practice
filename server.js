@@ -5,6 +5,8 @@ import { authMiddleWare } from "./middleware/index.js";
 const app = express();
 const PORT = 5000;
 
+app.use(express());
+
 app.get("/", (request, response) => {
   response.send(new Date().toString());
 });
