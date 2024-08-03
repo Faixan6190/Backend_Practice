@@ -344,3 +344,5 @@
 // app.listen(PORT, () => console.log(`Server is running up at ${PORT}`));
 
 import express from "express";
+
+const app = express();
