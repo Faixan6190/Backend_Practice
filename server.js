@@ -30,7 +30,7 @@ app.delete("/deletepost/:id", (request, response) => {
   const { id } = request.params;
   const index = users.findIndex((obj) => obj.id === Number(id));
   users.splice(index, 1);
-  
+
   response.send({ message: "User deleted successfully" });
 });
 
@@ -39,4 +39,4 @@ app.post("/createpost", (request, response) => {
   response.send({ users: request.body, message: "User added successfully" });
 });
 
-app.listen(PORT, () => console.log(`Server is Running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server is Running On http://localhost:${PORT}`));
