@@ -26,8 +26,10 @@ app.get("/getuser", (request, response) => {
   response.send(users);
 });
 
+app.delete("")
+
 app.post("/createpost", (request, response) => {
-  users.push(request.body);
+  users.push({ ...request.body, id: users.length + 1 });
   response.send({ users: request.body, message: "User added successfully" });
 });
 
