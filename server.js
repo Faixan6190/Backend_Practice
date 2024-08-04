@@ -28,8 +28,9 @@ app.get("/getuser", (request, response) => {
 
 app.delete("/deletepost/:id", (request, response) => {
   const { id } = request.params;
-  const index = users.findIndex((value) => value.id === id);
-  console.log(index);
+  const index = users.findIndex((obj) => obj.id === id);
+  users.splice(index, 1);
+  response.send({ message: "User deleted successfully" });
 });
 
 app.post("/createpost", (request, response) => {
