@@ -26,7 +26,11 @@ app.get("/getuser", (request, response) => {
   response.send(users);
 });
 
-app.delete("")
+app.delete("/deletepost/:id", (request, response) => {
+  const { id } = request.params;
+  const index = users.findIndex((value) => value.id === id);
+  console.log(index);
+});
 
 app.post("/createpost", (request, response) => {
   users.push({ ...request.body, id: users.length + 1 });
