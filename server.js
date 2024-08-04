@@ -26,16 +26,21 @@ app.get("/getuser", (request, response) => {
   response.send(users);
 });
 
+app.put("/updateuser/:id", (request, response) => {
+  const { id } = request.params;
+  const index = users.findIndex((obj) => obj.id === id);
+  users.splice(index, 1, { ...request.body, id });
+  response.send({ id, message: "User update successfully" });
+});
+
 app.delete("/deletepost/:id", (request, response) => {
   const { id } = request.params;
-  const index = users.findIndex((obj) => obj.id === Number(id));
-  users.splice(index, 1);
-
+  users = users.filter((obj) => obj.id !== id);
   response.send({ message: "User deleted successfully" });
 });
 
 app.post("/createpost", (request, response) => {
-  users.push({ ...request.body, id: users.length + 1 });
+  users.push({ ...request.body, id: Date.now().toString(36) });
   response.send({ users: request.body, message: "User added successfully" });
 });
 
