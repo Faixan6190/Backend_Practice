@@ -1,6 +1,7 @@
 import express from "express";
 import { products } from "./tempdata/product.js";
 import { authMiddleWare } from "./middleware/index.js";
+import { userSchema } from "./models/userSchema.js";
 
 const app = express();
 const PORT = 5000;
@@ -39,12 +40,13 @@ app.delete("/deletepost/:id", (request, response) => {
   response.send({ message: "User deleted successfully" });
 });
 
-app.post("/createpost", (request, response) => {
+app.post("/createpost", async (request, response) => {
   try {
+    await userSchema.validateAsync(request.body);
     users.push({ ...request.body, id: Date.now().toString(36) });
     response.status(201).send({ status: 201, users: request.body, message: "User added successfully" });
   } catch (error) {
-    response.status(400).send({ status: 400, message: "Something went wrongS" });
+    response.status(400).send({ error: error.message || "Something went wrong", status: 400 });
   }
 });
 
