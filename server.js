@@ -7,7 +7,7 @@ const PORT = 5000;
 
 app.use(express.json());
 
-const users = [];
+let users = [];
 
 // app.get("/", (request, response) => {
 //   response.send(new Date().toString());
@@ -28,8 +28,9 @@ app.get("/getuser", (request, response) => {
 
 app.delete("/deletepost/:id", (request, response) => {
   const { id } = request.params;
-  const index = users.findIndex((obj) => obj.id === id);
+  const index = users.findIndex((obj) => obj.id === Number(id));
   users.splice(index, 1);
+  
   response.send({ message: "User deleted successfully" });
 });
 
