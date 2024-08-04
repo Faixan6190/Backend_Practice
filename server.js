@@ -40,8 +40,12 @@ app.delete("/deletepost/:id", (request, response) => {
 });
 
 app.post("/createpost", (request, response) => {
-  users.push({ ...request.body, id: Date.now().toString(36) });
-  response.send({ users: request.body, message: "User added successfully" });
+  try {
+    users.push({ ...request.body, id: Date.now().toString(36) });
+    response.status(201).send({ status: 201, users: request.body, message: "User added successfully" });
+  } catch (error) {
+    response.status(400).send({ status: 400, message: "Something went wrongS" });
+  }
 });
 
 app.listen(PORT, () => console.log(`Server is Running On http://localhost:${PORT}`));
