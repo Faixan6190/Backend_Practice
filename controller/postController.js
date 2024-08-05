@@ -6,3 +6,7 @@ export const createPost = async (request, response) => {
     console.log(error);
   }
 };
+
+export const getPost = (request, response)=>{
+    
+}
