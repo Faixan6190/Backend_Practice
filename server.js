@@ -2,6 +2,7 @@ import express from "express";
 import { products } from "./tempdata/product.js";
 import { authMiddleWare } from "./middleware/index.js";
 import { userSchema } from "./models/userSchema.js";
+import route from "./routes/index.js";
 
 const app = express();
 const PORT = 5000;
@@ -46,8 +47,10 @@ app.use(express.json());
 //   }
 // });
 
-app.get("/", (request, response) => {
-  response.send(new Date().toString());
-});
+// app.get("/", (request, response) => {
+//   response.send(new Date().toString());
+// });
+
+app.use("/api", route);
 
 app.listen(PORT, () => console.log(`Server is Running On http://localhost:${PORT}`));
