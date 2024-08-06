@@ -4,13 +4,16 @@ const userSchema = new mongoose.Schema(
   {
     username: {
       type: mongoose.Schema.Types.String,
+      required: true,
     },
     email: {
       type: mongoose.Schema.Types.String,
       unique: true,
+      required: true,
     },
     password: {
       type: mongoose.Schema.Types.String,
+      required: true,
     },
   },
   {
@@ -27,6 +30,8 @@ const userSchema = new mongoose.Schema(
 const UserModal = mongoose.model("testuser", userSchema);
 
 export default UserModal;
+
+// MONGODB COMPASS DOWNLOAD GUI//
 
 // import Joi from "joi";
 

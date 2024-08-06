@@ -2,11 +2,10 @@ import UserModal from "../models/userSchema.js";
 
 export const createPost = async (request, response) => {
   try {
-    const user = new UserModal(request.body);
-    user.save();
-    response.status(200).send({ status: 200 });
+    const user = await UserModal.create(request.body);
+    response.status(201).send({ status: 201, user });
   } catch (error) {
-    console.log(error.code || error.message);
+    response.status(500).send({ status: 500, error });
   }
 };
 
