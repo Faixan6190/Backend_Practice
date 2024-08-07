@@ -17,6 +17,4 @@ mongoose.connection.on("error", (error) => {
 
 app.use("/api", route);
 
-
-
 app.listen(PORT, () => console.log(`Server is Running On http://localhost:${PORT}`));
