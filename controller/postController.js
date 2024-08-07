@@ -39,3 +39,4 @@ export const updateUser = async (request, response) => {
     response.status(500).send({ status: 500, error });
   }
 };
+
