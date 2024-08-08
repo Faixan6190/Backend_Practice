@@ -1,6 +1,6 @@
 import express from "express";
-import { createUser, deleteUser, getUser, updateUser } from "../controller/postController.js";
-import { loginUser, signupUser } from "../controller/authController.js";
+import { createUser, deleteUser, getUser, updateUser } from "../../controller/postController.js";
+import { loginUser, signupUser } from "../../controller/authController.js";
 import tokenVerificaton from "../config/tokenVerification.js";
 
 const route = express.Router();

@@ -1,4 +1,4 @@
-import UserModal from "../models/userSchema.js";
+import UserModal from "../src/models/userSchema.js";
 
 export const createUser = async (request, response) => {
   try {
@@ -39,5 +39,3 @@ export const updateUser = async (request, response) => {
     response.status(500).send({ status: 500, error });
   }
 };
-
-
